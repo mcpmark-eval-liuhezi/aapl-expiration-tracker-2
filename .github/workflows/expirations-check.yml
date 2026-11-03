@@ -1,0 +1,11 @@
+name: Weekly Expiration Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  uptime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report
+        run: echo "AAPL options expiration tracker workflow ran."
