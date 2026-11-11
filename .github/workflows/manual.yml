@@ -1,0 +1,11 @@
+name: Manual Weekly AAPL Expiration Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  weekly-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo status
+        run: echo "AAPL expiration tracker workflow executed manually for risk desk review."
