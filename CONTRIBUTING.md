@@ -1,30 +1,24 @@
 # Contributing to aapl-expiration-tracker
 
-Thanks for your interest in contributing to this repository! This repo tracks Apple (AAPL) options expiration data for weekly risk meeting reviews. All market figures must come from live data sources (Yahoo Finance via the desk's data pipeline).
+Thank you for contributing to the AAPL options expiration tracker. This repository holds weekly option expiration data for the risk desk, sourced from live market data (Yahoo Finance).
 
-## Adding a new expiration tracker
+## Adding this week's tracking issues
 
-1. Create a tracking issue titled `Expiry YYYY-MM-DD` (substitute the real date).
-2. Include in the issue body:
-   - The expiration's at-the-money strike (closest strike to current share price)
-   - The highest-open-interest call strike and its OI
-   - The highest-open-interest put strike and its OI
-   - The share price you used
-3. Add `expirations.md` on a new branch (e.g. `add-expirations-markdown`) at the repo root with the company snapshot, full expiration list, and a per-expiration stats table.
-4. Open a pull request from that branch into `main`.
+1. Create one issue per upcoming expiration, in date order, titled `Expiry YYYY-MM-DD`.
+2. Include in the issue body: the expiration date, the at-the-money strike, the highest-open-interest call strike, the highest-open-interest put strike, and the share price used.
 
-## Code & workflow contributions
+## Adding the expirations.md summary
 
-- Keep changes minimal and focused (one file or one job per PR).
-- Use `作出的` minimal CI workflow in `.github/workflows/` triggered manually (`workflow_dispatch`).
-- When adding a workflow, echo a single line in the job so runs are trivially verifiable.
+1. Create a working branch (e.g. `add-expirations-markdown`).
+2. Add `expirations.md` at the repo root with:
+   - Company snapshot (HQ address, city, sector, industry, share price)
+   - Full list of currently available option expiration dates
+   - Per-expiration stats table (ATM strike, highest-OI call strike, highest-OI put strike) for the three soonest upcoming expirations
+3. Open a pull request from the branch into `main`.
+4. After the PR is open, add a short `CONTRIBUTING.md` to `main`, then update the PR branch so it picks up that commit.
 
-## Data integrity
+## Notes
 
-- Report exactly what the source returns; do not "clean up" odd values silently.
-- Note the share price used and the pull date in every stats table.
-- Flag low-liquidity expirities (e.g. OI 0 / volume null) rather than omitting them.
-
-## Discussion
-
-Repo discussions are off-topic Friendly; file issues for data fixes and PRs for changes.
+- All market figures must come from live data. Where a number looks odd, report exactly what the source returned rather than altering it.
+- Share price used for ATM calculations is documented in each issue and in `expirations.md`.
+- Open interest and volume figures can shift intraday; note the pull timestamp in PR descriptions.
