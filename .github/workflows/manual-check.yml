@@ -1,11 +1,11 @@
-name: Manual Tracker Check
+name: Manual Check
 
 on:
   workflow_dispatch:
 
 jobs:
-  check:
+  echo-line:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo status
-        run: echo "AAPL expiration tracker workflow check OK"
+      - name: Echo a single line
+        run: echo "AAPL expiration tracker workflow ran successfully."
